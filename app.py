@@ -11,7 +11,10 @@ with open("faqs.json", "r") as f:
     faq_data = json.load(f)
 
 # Extract questions for vectorization
-questions = [faq['question'] for faq in faq_data]
+questions = []
+for category in faq_data:  # Iterate through categories in faq_data
+    for faq in faq_data[category]:  # Iterate through faqs in each category
+        questions.append(faq['question'])
 
 # Initialize TF-IDF Vectorizer and compute question vectors
 vectorizer = TfidfVectorizer().fit(questions)
