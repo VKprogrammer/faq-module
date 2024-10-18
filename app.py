@@ -7,7 +7,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 app = Flask(__name__)
 
 # Load FAQ data from JSON file
-with open("faq_data.json", "r") as f:
+with open("faqs.json", "r") as f:
     faq_data = json.load(f)
 
 # Extract questions for vectorization
