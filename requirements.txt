@@ -6,3 +6,4 @@ rank-bm25==0.2  # For BM25 search (if used as an alternative)
 numpy==1.24.3
 torch==2.0.1  # Required for Sentence Transformers
 transformers==4.33.2  # Underlying models for sentence-transformers
+huggingface_hub==0.12.1   
