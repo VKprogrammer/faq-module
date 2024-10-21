@@ -1,0 +1,7 @@
+Flask==2.3.2
+scikit-learn==1.2.2
+sentence-transformers==2.2.2  # Required for BERT embeddings
+rank-bm25==0.2  # For BM25 search (if used as an alternative)
+numpy==1.24.3
+torch==2.0.1  # Required for Sentence Transformers
+transformers==4.33.2  # Underlying models for sentence-transformers
