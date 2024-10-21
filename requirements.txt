@@ -1,5 +1,6 @@
 Flask==2.3.2
 scikit-learn==1.2.2
+gunicorn
 sentence-transformers==2.2.2  # Required for BERT embeddings
 rank-bm25==0.2  # For BM25 search (if used as an alternative)
 numpy==1.24.3
