@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Search System</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Smart FAQ Search Module</h1>
+    </div>
+
+    <div class="container">
+        <input type="text" id="query-input" placeholder="Ask your question here...">
+        <button id="search-btn">Search</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        document.getElementById('search-btn').addEventListener('click', () => {
+            const query = document.getElementById('query-input').value;
+            if (!query) {
+                alert('Please enter a question!');
+                return;
+            }
+
+            fetch('/search', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = '';  // Clear previous results
+
+                if (data.length === 0) {
+                    resultsDiv.innerHTML = '<p>No matching FAQs found.</p>';
+                    return;
+                }
+
+                // Only display the answer
+                data.forEach(result => {
+                    const answerElem = document.createElement('p');
+                    answerElem.className = 'answer';
+                    answerElem.innerHTML = `<strong>A:</strong> ${result.answer}`;
+                    resultsDiv.appendChild(answerElem);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
